@@ -3,11 +3,19 @@ create database if not exists bamazon;
 
 use bamazon;
 
+create table if not exists departments(
+department_id int not null auto_increment,
+department_name varchar(100),
+over_head_costs float(100),
+stock_quantity int(100),
+primary key(item_id)
+);
+
 create table if not exists products(
 item_id int not null auto_increment,
 product_name varchar(100),
 department_name varchar(100),
-price decimal(10),
+price float(10),
 stock_quantity int(100),
 primary key(item_id)
 );
