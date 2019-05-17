@@ -6,7 +6,8 @@ use bamazon;
 create table if not exists departments(
 department_id int not null auto_increment,
 department_name varchar(100),
-overhead_costs float,
+overhead_costs float default 0.00,
+sales float default 0.00,
 primary key(department_id)
 );
 
