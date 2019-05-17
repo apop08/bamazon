@@ -85,7 +85,7 @@ function promptCustomerBuy(item)
 
 function checkItem(item)
 {
-    connection.query("SELECT item_id, product_name, price, stock_quantity from products where ?",{
+    connection.query("SELECT item_id, department_name, product_name, price, stock_quantity from products where ?",{
         product_name: item
     }, function (err, res) {
 
@@ -109,10 +109,13 @@ function checkItem(item)
 function buy(item, qty)
 {
     connection.query("update products set ? where ?", [{stock_quantity: item.stock_quantity - qty}, {item_id: item.item_id}], function (err, res) {
-
-        if (err) throw err;
-        console.log(`You bought ${qty} of ${item.product_name} costing $ ${qty * item.price}`);
-        restartQuestion();
+        if(err) throw err;
+        connection.query(`update departments set sales = sales + ${qty * item.price} where ?`, {department_name: item.department_name}, function (err, res) {
+            console.log(item.department_name);
+            if (err) throw err;
+            console.log(`You bought ${qty} of ${item.product_name} costing $ ${qty * item.price}`);
+            restartQuestion();
+        });
     });
 }
 

@@ -6,8 +6,8 @@ use bamazon;
 create table if not exists departments(
 department_id int not null auto_increment,
 department_name varchar(100),
-overhead_costs float default 0.00,
-sales float default 0.00,
+overhead_costs float(10) default 0.00,
+sales float(10) default 0.00,
 primary key(department_id)
 );
 
@@ -27,4 +27,4 @@ values ("steak", "meat", 20.0, 20), ("potatoes", "produce", 5.5, 100), ("strawbe
 ("party wings", "meat", 8.90, 12), ("drumsticks", "meat", 7.40, 10), ("whole chicken", "meat", 5.99, 3), ("whiskey", "alcohol", 12.99, 40);
 
 insert into departments (department_name, overhead_costs)
-values ("meat", 50), ("produce", 20), ("candy", 2), ("electronics", 1000), ("alchohol", 40);
+values ("meat", 50), ("produce", 20), ("candy", 2), ("electronics", 1000), ("alcohol", 40);
