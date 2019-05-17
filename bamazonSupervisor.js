@@ -64,7 +64,7 @@ function promptSupervisorAdd() {
             },
         ])
         .then(function (ans) {
-            addDept(ans)
+            addItem(ans)
         });
 }
 
